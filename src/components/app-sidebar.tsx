@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import { NavProjects } from "@/components/nav-projects"
+import { consolePages } from "@/lib/console-pages"
 import {
   Sidebar,
   SidebarContent,
@@ -12,15 +13,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import {
-  AppWindowIcon,
-  BookOpenTextIcon,
-  BookTextIcon,
-  ChartNoAxesColumnIncreasingIcon,
-  HomeIcon,
-  KeyRoundIcon,
-  MessageSquareIcon,
-} from "lucide-react"
+import { AppWindowIcon, HomeIcon, MessageSquareIcon } from "lucide-react"
 
 const data = {
   user: {
@@ -42,40 +35,6 @@ const data = {
       url: "https://bbs.baizhi.cloud/",
       icon: (
         <MessageSquareIcon
-        />
-      ),
-    },
-  ],
-  projects: [
-    {
-      name: "接入指南",
-      url: "#",
-      icon: (
-        <BookOpenTextIcon
-        />
-      ),
-    },
-    {
-      name: "知识库",
-      url: "#",
-      icon: (
-        <BookTextIcon
-        />
-      ),
-    },
-    {
-      name: "密钥管理",
-      url: "#",
-      icon: (
-        <KeyRoundIcon
-        />
-      ),
-    },
-    {
-      name: "用量监控",
-      url: "#",
-      icon: (
-        <ChartNoAxesColumnIncreasingIcon
         />
       ),
     },
@@ -102,7 +61,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavProjects projects={data.projects} />
+        <NavProjects
+          projects={consolePages.map((page) => ({
+            name: page.title,
+            url: page.path,
+            icon: page.icon,
+          }))}
+        />
       </SidebarContent>
       <SidebarFooter>
         <SidebarGroup className="mt-auto">

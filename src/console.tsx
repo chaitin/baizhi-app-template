@@ -1,5 +1,8 @@
+import { Link, Outlet, useLocation } from "react-router-dom"
+
 import { AppSidebar } from "@/components/app-sidebar"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { defaultConsolePage, getConsolePage } from "@/lib/console-pages"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -16,6 +19,9 @@ import {
 } from "@/components/ui/sidebar"
 
 export default function Console() {
+  const location = useLocation()
+  const currentPage = getConsolePage(location.pathname)
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -30,13 +36,13 @@ export default function Console() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Build Your Application
+                  <BreadcrumbLink render={<Link to={defaultConsolePage} />}>
+                    应用名称
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>{currentPage.title}</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -45,14 +51,7 @@ export default function Console() {
             </div>
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-          </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-        </div>
+        <Outlet />
       </SidebarInset>
     </SidebarProvider>
   )
