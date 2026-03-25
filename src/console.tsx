@@ -38,6 +38,15 @@ export default function Console() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink
+                    href="https://baizhi.cloud/apps"
+                    render={<a href="https://baizhi.cloud/apps" />}
+                  >
+                    长亭百智云
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbItem className="hidden md:block">
                   <BreadcrumbLink render={<Link to={defaultConsolePage} />}>
                     应用名称
                   </BreadcrumbLink>
