@@ -12,7 +12,15 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { AppWindowIcon, HomeIcon, MessageSquareIcon, FrameIcon, PieChartIcon, MapIcon } from "lucide-react"
+import {
+  AppWindowIcon,
+  BookOpenTextIcon,
+  BookTextIcon,
+  ChartNoAxesColumnIncreasingIcon,
+  HomeIcon,
+  KeyRoundIcon,
+  MessageSquareIcon,
+} from "lucide-react"
 
 const data = {
   user: {
@@ -40,26 +48,34 @@ const data = {
   ],
   projects: [
     {
-      name: "Design Engineering",
+      name: "接入指南",
       url: "#",
       icon: (
-        <FrameIcon
+        <BookOpenTextIcon
         />
       ),
     },
     {
-      name: "Sales & Marketing",
+      name: "知识库",
       url: "#",
       icon: (
-        <PieChartIcon
+        <BookTextIcon
         />
       ),
     },
     {
-      name: "Travel",
+      name: "密钥管理",
       url: "#",
       icon: (
-        <MapIcon
+        <KeyRoundIcon
+        />
+      ),
+    },
+    {
+      name: "用量监控",
+      url: "#",
+      icon: (
+        <ChartNoAxesColumnIncreasingIcon
         />
       ),
     },
