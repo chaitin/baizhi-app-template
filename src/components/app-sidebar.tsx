@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { NavProjects } from "@/components/nav-projects"
+import { NavConsolePages } from "@/components/nav-console-pages"
 import { consolePages } from "@/lib/console-pages"
 import {
   Sidebar,
@@ -25,18 +25,12 @@ const data = {
     {
       title: "长亭百智云",
       url: "https://baizhi.cloud/",
-      icon: (
-        <HomeIcon
-        />
-      ),
+      icon: <HomeIcon />,
     },
     {
       title: "技术论坛",
       url: "https://bbs.baizhi.cloud/",
-      icon: (
-        <MessageSquareIcon
-        />
-      ),
+      icon: <MessageSquareIcon />,
     },
   ],
 }
@@ -64,8 +58,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavProjects
-          projects={consolePages.map((page) => ({
+        <NavConsolePages
+          pages={consolePages.map((page) => ({
             name: page.title,
             url: page.path,
             icon: page.icon,

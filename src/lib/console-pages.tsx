@@ -56,6 +56,10 @@ export const consolePages: ConsolePage[] = [
 
 export const defaultConsolePage = consolePages[0].path
 
+export const defaultKnowledgeBasePage =
+  consolePages.find((page) => page.path === "/knowledge-base")?.children?.[0]
+    ?.path ?? defaultConsolePage
+
 export function getConsolePage(pathname: string) {
   for (const page of consolePages) {
     if (page.path === pathname) {
