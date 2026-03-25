@@ -20,7 +20,9 @@ import {
 
 export default function Console() {
   const location = useLocation()
-  const currentPage = getConsolePage(location.pathname)
+  const { page: currentPage, parent: currentParent } = getConsolePage(
+    location.pathname
+  )
 
   return (
     <SidebarProvider>
@@ -42,7 +44,9 @@ export default function Console() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>{currentPage.title}</BreadcrumbPage>
+                  <BreadcrumbPage>
+                    {currentParent ? `${currentParent.title} / ${currentPage.title}` : currentPage.title}
+                  </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>

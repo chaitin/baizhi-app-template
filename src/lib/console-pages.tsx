@@ -5,7 +5,19 @@ import {
   KeyRoundIcon,
 } from "lucide-react"
 
-export const consolePages = [
+type ConsoleChildPage = {
+  path: string
+  title: string
+}
+
+type ConsolePage = {
+  path: string
+  title: string
+  icon: React.ReactNode
+  children?: ConsoleChildPage[]
+}
+
+export const consolePages: ConsolePage[] = [
   {
     path: "/access-guide",
     title: "接入指南",
@@ -15,6 +27,20 @@ export const consolePages = [
     path: "/knowledge-base",
     title: "知识库",
     icon: <BookTextIcon />,
+    children: [
+      {
+        path: "/knowledge-base/1",
+        title: "知识库 1",
+      },
+      {
+        path: "/knowledge-base/2",
+        title: "知识库 2",
+      },
+      {
+        path: "/knowledge-base/3",
+        title: "知识库 3",
+      },
+    ],
   },
   {
     path: "/api-keys",
@@ -31,5 +57,25 @@ export const consolePages = [
 export const defaultConsolePage = consolePages[0].path
 
 export function getConsolePage(pathname: string) {
-  return consolePages.find((page) => page.path === pathname) ?? consolePages[0]
+  for (const page of consolePages) {
+    if (page.path === pathname) {
+      return {
+        page,
+        parent: undefined,
+      }
+    }
+
+    const child = page.children?.find((item) => item.path === pathname)
+    if (child) {
+      return {
+        page: child,
+        parent: page,
+      }
+    }
+  }
+
+  return {
+    page: consolePages[0],
+    parent: undefined,
+  }
 }
