@@ -7,6 +7,7 @@ import {
 } from "@/lib/console-pages"
 import AccessGuidePage from "@/pages/access-guide-page"
 import ApiKeysPage from "@/pages/api-keys-page"
+import DeveloperAccessPage from "@/pages/developer-access-page"
 import KnowledgeBasePage from "@/pages/knowledge-base-page"
 import UsageMonitoringPage from "@/pages/usage-monitoring-page"
 
@@ -22,6 +23,11 @@ export function App() {
         />
         <Route element={<KnowledgeBasePage />} path="knowledge-base/:id" />
         <Route element={<ApiKeysPage />} path="api-keys" />
+        <Route
+          element={<DeveloperAccessPage />}
+          path="developer-access"
+        />
+        <Route element={<Navigate replace to="/developer-access" />} path="developer-access/:section" />
         <Route element={<UsageMonitoringPage />} path="usage-monitoring" />
       </Route>
       <Route element={<Navigate replace to={defaultConsolePage} />} path="*" />
