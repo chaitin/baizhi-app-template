@@ -3,6 +3,7 @@ import {
   BookTextIcon,
   ChartNoAxesColumnIncreasingIcon,
   KeyRoundIcon,
+  PlugZapIcon,
 } from "lucide-react"
 
 type ConsoleChildPage = {
@@ -46,6 +47,11 @@ export const consolePages: ConsolePage[] = [
     path: "/api-keys",
     title: "密钥管理",
     icon: <KeyRoundIcon />,
+  },
+  {
+    path: "/developer-access",
+    title: "快速集成",
+    icon: <PlugZapIcon />,
   },
   {
     path: "/usage-monitoring",

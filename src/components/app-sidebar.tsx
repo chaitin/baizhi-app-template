@@ -3,6 +3,11 @@ import * as React from "react"
 import { NavConsolePages } from "@/components/nav-console-pages"
 import { consolePages } from "@/lib/console-pages"
 import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
@@ -13,7 +18,12 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { AppWindowIcon, HomeIcon, MessageSquareIcon } from "lucide-react"
+import {
+  AppWindowIcon,
+  HomeIcon,
+  MessageSquareIcon,
+  UsersRoundIcon,
+} from "lucide-react"
 
 const data = {
   user: {
@@ -74,6 +84,43 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarGroup className="mt-auto">
           <SidebarGroupContent>
             <SidebarMenu>
+              <SidebarMenuItem>
+                <HoverCard>
+                  <HoverCardTrigger
+                    render={
+                      <SidebarMenuButton
+                        aria-label="技术交流群"
+                        className="cursor-default"
+                        size="sm"
+                        tooltip="技术交流群"
+                        type="button"
+                      />
+                    }
+                  >
+                    <UsersRoundIcon />
+                    <span>技术交流群</span>
+                  </HoverCardTrigger>
+                  <HoverCardContent
+                    align="start"
+                    className="w-52"
+                    side="top"
+                    sideOffset={10}
+                  >
+                    <div className="flex flex-col gap-3">
+                      <div className="overflow-hidden rounded-xl border bg-background shadow-xs">
+                        <img
+                          alt="技术交流群二维码"
+                          className="size-full object-cover"
+                          src="/tech-community-qr.png"
+                        />
+                      </div>
+                      <div className="text-center text-sm text-muted-foreground">
+                        扫码加入技术交流群
+                      </div>
+                    </div>
+                  </HoverCardContent>
+                </HoverCard>
+              </SidebarMenuItem>
               {data.navSecondary.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
